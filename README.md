@@ -124,7 +124,7 @@
 
 ![](https://i.loli.net/2020/07/18/l6PTUNbJIMDGA4O.png)
 
-![](https://i.loli.net/2020/07/18/5tNdbimDaqIUgYZ.png)
+![](https://i.loli.net/2020/07/27/yRX4eNGT5BmDHOb.png)
 
 #### 3、开启Actions
 
