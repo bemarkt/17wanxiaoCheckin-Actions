@@ -27,17 +27,7 @@ jobs:
     - name: HealthCheckin
       run: |
         python3 17wanxiao.py <<EOF
-        ${{secrets.TEXT}}
-        ${{secrets.DEPTID}}
-        ${{secrets.ADDRESS}}
-        ${{secrets.ADDTEXT}}
-        ${{secrets.CODE}}
-        ${{secrets.STUNUM}}
-        ${{secrets.USERNAME}}
-        ${{secrets.PHONENUM}}
-        ${{secrets.USERID}}
-        ${{secrets.EMERGENCY}}
-        ${{secrets.EMERGENCYPHONE}}
         ${{secrets.SCKEY}}
+        ${{secrets.RAW_JSON}}
         EOF
         
