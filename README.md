@@ -113,25 +113,12 @@
 
 - 找到自己fork的库，点击Settings->Secrets->New sceret
 
-- 字段名使用大写，下面的值则填写自己的值，总共12个，细心填写这关乎之后的成功与否
+- 字段名使用大写，建议直接复制添加，字段值则填写自己获取的值。
 
-- ```
-  # 设置如下secret字段
-  """
-  TEXT(学院专业班级信息)                例：林学院-林学(陶铸实验班)-2017林学(陶铸实验班)1班
-  DEPTID(未知id字段)                   例：141670
-  ADDRESS(详细地址)                    例：非常富贵
-  ADDTEXT(省-市-县/区)                 例：江西省-南昌市-高新区
-  CODE(盲猜邮编)                       例：360192
-  STUNUM(学号)                        例：20170101
-  USERNAME(姓名)                      例：小冯
-  PHONENUM(电话)                      例：...自己电话...
-  USERID(完美校园分配的用户id)          例：6274894
-  EMERGENCY(紧急联系人)                例：紧急人
-  EMERGENCYPHONE(紧急联系人电话)        例：23667712771
-  SCKEY(Server酱微信推送)
-  """
-  ```
+| 字段名 (含义)                   | 字段值                                                       |
+| ------------------------------- | ------------------------------------------------------------ |
+| SCKEY (Server酱微信推送)        | SCU********                                                  |
+| RAW_JSON (抓包中的原始JSON内容) | {"businessType":"epmpics","method":"submitUpInfo","jsonData":{"deptStr":{"deptid":.... ,"gpsType":0}} |
 
 ![](https://i.loli.net/2020/07/18/vSkAs1hP6NU2Dce.png)
 
@@ -171,46 +158,7 @@
 > Tips：actions配置文件在\.github\workflows\run.yml中
 >
 
-#### 1、参数设置(secret)
-
-```python
-# 设置如下secret字段
-"""
-TEXT(学院专业班级信息)                例：林学院-林学(陶铸实验班)-2017林学(陶铸实验班)1班
-DEPTID(未知id字段)                   例：141670
-ADDRESS(详细地址)                    例：非常富贵
-ADDTEXT(省-市-县/区)                 例：江西省-南昌市-高新区
-CODE(盲猜邮编)                       例：360192
-STUNUM(学号)                        例：20170101
-USERNAME(姓名)                      例：小冯
-PHONENUM(电话)                      例：...自己电话...
-USERID(完美校园分配的用户id)          例：6274894
-EMERGENCY(紧急联系人)                例：紧急人
-EMERGENCYPHONE(紧急联系人电话)        例：23667712771
-SCKEY(Server酱微信推送)
-"""
-
-
-# 相关参数设置即对应下面的数据输入
-"""
-python3 17wanxiao.py <<EOF
-${{secrets.TEXT}}
-${{secrets.DEPTID}}
-${{secrets.ADDRESS}}
-${{secrets.ADDTEXT}}
-${{secrets.CODE}}
-${{secrets.STUNUM}}
-${{secrets.USERNAME}}
-${{secrets.PHONENUM}}
-${{secrets.USERID}}
-${{secrets.EMERGENCY}}
-${{secrets.EMERGENCYPHONE}}
-${{secrets.SCKEY}}
-EOF
-"""
-```
-
-#### 2、计划时间参数
+#### 1、计划时间参数
 
 ```python
 schedule:
@@ -220,7 +168,7 @@ schedule:
 # 国际时与北京时的查询网站：http://www.timebie.com/cn/universalbeijing.php
 ```
 
-#### 3、Install Python
+#### 2、Install Python
 
 ```python
 # 为虚拟机安装python3环境
@@ -230,7 +178,7 @@ run: |
 # 由于使用的是Ubuntu的虚拟机，因此执行的是linux语句
 ```
 
-#### 4、Pip install requests
+#### 3、Pip install requests
 
 ```python
 # 为py程序的执行安装第三方库requests
@@ -238,24 +186,14 @@ run: |
     pip3 install requests -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-#### 5、HealthCheckin
+#### 4、HealthCheckin
 
 ```python
 # 运行py脚本文件
 run: |
     python3 17wanxiao.py <<EOF
-    ${{secrets.TEXT}}
-    ${{secrets.DEPTID}}
-    ${{secrets.ADDRESS}}
-    ${{secrets.ADDTEXT}}
-    ${{secrets.CODE}}
-    ${{secrets.STUNUM}}
-    ${{secrets.USERNAME}}
-    ${{secrets.PHONENUM}}
-    ${{secrets.USERID}}
-    ${{secrets.EMERGENCY}}
-    ${{secrets.EMERGENCYPHONE}}
     ${{secrets.SCKEY}}
+    ${{secrets.RAW_JSON}}
     EOF
 ```
 
