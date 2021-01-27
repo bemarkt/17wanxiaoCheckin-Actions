@@ -1,14 +1,10 @@
 name: 17wanxiaoCheckin
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
   watch:
     types: started
-  #schedule:
-    #- cron: 0 22 * * *
+  schedule:
+    - cron: 0 22 * * *
 
 jobs:
   build:
