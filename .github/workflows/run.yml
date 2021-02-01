@@ -3,8 +3,8 @@ name: 17wanxiaoCheckin
 on:
   watch:
     types: started
-  schedule:
-    - cron: 0 22 * * *
+#   schedule:
+#     - cron: 0 22 * * *
 
 jobs:
   build:
